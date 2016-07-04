@@ -7,8 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
-@Component
-@Scope("prototype")
 public class MainExecutor<T extends List<Integer>> implements Executor<T> {
 
     private List<TaskWithValidator> tasks = new ArrayList<>();

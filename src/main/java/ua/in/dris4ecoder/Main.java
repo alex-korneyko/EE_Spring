@@ -8,14 +8,10 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 
-/**
- * Created by Alex Korneyko on 03.06.2016.
- */
-@Component
 public class Main {
 
     private TaskProvider<ArrayList<Integer>> taskProvider;
-    private ObjectFactory<Executor<ArrayList<Integer>>> executorFactory;
+    private ExecutorFactory executorFactory;
 
     public static void main(String[] args) {
 
@@ -28,7 +24,7 @@ public class Main {
 
     public void execute() {
 
-        Executor<ArrayList<Integer>> executor = executorFactory.getObject();
+        Executor<ArrayList<Integer>> executor = executorFactory.getIntegerExecutor();
 
         taskProvider.getAllTasks().forEach(executor::addTask);
         executor.execute();
@@ -39,13 +35,11 @@ public class Main {
         executor.getInvalidResults().forEach(System.out::println);
     }
 
-    @Autowired
     public void setTaskProvider(TaskProvider<ArrayList<Integer>> taskProvider) {
         this.taskProvider = taskProvider;
     }
 
-    @Autowired
-    public void setExecutorFactory(ObjectFactory<Executor<ArrayList<Integer>>> executorFactory) {
+    public void setExecutorFactory(ExecutorFactory executorFactory) {
         this.executorFactory = executorFactory;
     }
 }

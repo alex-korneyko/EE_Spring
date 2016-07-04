@@ -7,12 +7,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-@Component
 public class IntegerTaskProvider implements TaskProvider<ArrayList<Integer>> {
 
     private List<Task<ArrayList<Integer>>> tasks = new ArrayList<>();
 
-    @PostConstruct
     public void init() {
 
         tasks.add(new SimpleTask<>(ArrayList.class, new ArrayList<>(Arrays.asList(8, 1, 2, 3, 5))));
