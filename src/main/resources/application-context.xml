@@ -11,7 +11,9 @@
 
     <bean id="taskProvider" class="IntegerTaskProvider" init-method="init"/>
 
-    <bean id="randomTaskProvider" class="RandomTaskProvider" init-method="init"/>
+    <bean id="randomTaskProvider" class="RandomTaskProvider" init-method="init">
+        <property name="initSize" value="10000"/>
+    </bean>
 
     <bean id="myExecutor" class="MainExecutor" scope="prototype"/>
 

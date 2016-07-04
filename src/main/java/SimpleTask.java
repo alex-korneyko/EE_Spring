@@ -24,10 +24,8 @@ public class SimpleTask<T extends List<Integer>> implements Task<T> {
 
     @Override
     public void execute() {
-//        if (isExecuted) {
-//            throw new IllegalStateException("Executor is already executed");
-//        }
         isExecuted = true;
+
         if (initList == null) {
             IntStream.range(0, 10).forEach((i) -> list.add((int) (Math.random() * 10)));
         } else {

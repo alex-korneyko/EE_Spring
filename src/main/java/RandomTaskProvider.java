@@ -7,15 +7,20 @@ import java.util.stream.IntStream;
  */
 public class RandomTaskProvider implements TaskProvider<List<Integer>> {
 
+    private int initSize = 0;
+
     private List<Task<List<Integer>>> tasks = new ArrayList<>();
 
     public void init(){
-        IntStream.range(0, 10_000).forEach(i -> tasks.add(new SimpleTask<>(ArrayList.class)));
+        IntStream.range(0, initSize).forEach(i -> tasks.add(new SimpleTask<>(ArrayList.class)));
     }
-
 
     @Override
     public List<Task<List<Integer>>> getAllTasks() {
         return tasks;
+    }
+
+    public void setInitSize(int initSize) {
+        this.initSize = initSize;
     }
 }
