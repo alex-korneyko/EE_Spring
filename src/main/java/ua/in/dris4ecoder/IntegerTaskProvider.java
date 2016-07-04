@@ -1,14 +1,18 @@
+package ua.in.dris4ecoder;
+
+import org.springframework.stereotype.Component;
+
+import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * Created by Alex Korneyko on 03.07.2016 18:54.
- */
+@Component
 public class IntegerTaskProvider implements TaskProvider<ArrayList<Integer>> {
 
     private List<Task<ArrayList<Integer>>> tasks = new ArrayList<>();
 
+    @PostConstruct
     public void init() {
 
         tasks.add(new SimpleTask<>(ArrayList.class, new ArrayList<>(Arrays.asList(8, 1, 2, 3, 5))));

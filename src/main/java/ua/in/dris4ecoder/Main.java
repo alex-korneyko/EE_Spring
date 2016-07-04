@@ -1,19 +1,21 @@
-import org.springframework.beans.BeansException;
+package ua.in.dris4ecoder;
+
+import org.springframework.beans.factory.ObjectFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.*;
 
 /**
  * Created by Alex Korneyko on 03.06.2016.
  */
+@Component
 public class Main {
 
     private TaskProvider<ArrayList<Integer>> taskProvider;
-    private ExecutorFactory executorFactory;
+    private ObjectFactory<Executor<ArrayList<Integer>>> executorFactory;
 
     public static void main(String[] args) {
 
@@ -26,7 +28,7 @@ public class Main {
 
     public void execute() {
 
-        Executor<ArrayList<Integer>> executor = executorFactory.getIntegerExecutor();
+        Executor<ArrayList<Integer>> executor = executorFactory.getObject();
 
         taskProvider.getAllTasks().forEach(executor::addTask);
         executor.execute();
@@ -37,11 +39,13 @@ public class Main {
         executor.getInvalidResults().forEach(System.out::println);
     }
 
+    @Autowired
     public void setTaskProvider(TaskProvider<ArrayList<Integer>> taskProvider) {
         this.taskProvider = taskProvider;
     }
 
-    public void setExecutorFactory(ExecutorFactory executorFactory) {
+    @Autowired
+    public void setExecutorFactory(ObjectFactory<Executor<ArrayList<Integer>>> executorFactory) {
         this.executorFactory = executorFactory;
     }
 }

@@ -1,3 +1,5 @@
+package ua.in.dris4ecoder;
+
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -25,7 +27,7 @@ public class SimpleTask<T extends List<Integer>> implements Task<T> {
     @Override
     public void execute() {
 //        if (isExecuted) {
-//            throw new IllegalStateException("Executor is already executed");
+//            throw new IllegalStateException("ua.in.dris4ecoder.Executor is already executed");
 //        }
         isExecuted = true;
         if (initList == null) {

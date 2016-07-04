@@ -1,9 +1,9 @@
-import java.util.ArrayList;
-import java.util.List;
+package ua.in.dris4ecoder;
 
-/**
- * Created by Alex Korneyko on 03.07.2016 20:11.
- */
+import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+
 public abstract class ExecutorFactory {
 
     public abstract Executor<ArrayList<Integer>> getIntegerExecutor();
