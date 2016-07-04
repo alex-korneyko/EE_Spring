@@ -4,11 +4,14 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="main" class="Main">
-        <property name="taskProvider" ref="taskProvider"/>
+        <!--<property name="taskProvider" ref="taskProvider"/>-->
+        <property name="taskProvider" ref="randomTaskProvider"/>
         <property name="executorFactory" ref="executorFactory"/>
     </bean>
 
     <bean id="taskProvider" class="IntegerTaskProvider" init-method="init"/>
+
+    <bean id="randomTaskProvider" class="RandomTaskProvider" init-method="init"/>
 
     <bean id="myExecutor" class="MainExecutor" scope="prototype"/>
 

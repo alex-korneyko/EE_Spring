@@ -1,11 +1,7 @@
-import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.*;
 
 /**
  * Created by Alex Korneyko on 03.06.2016.
@@ -20,7 +16,6 @@ public class Main {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("application-context.xml");
         Main mainClass = applicationContext.getBean("main", Main.class);
         mainClass.execute();
-        mainClass.execute();
 
     }
 
@@ -28,13 +23,13 @@ public class Main {
 
         Executor<ArrayList<Integer>> executor = executorFactory.getIntegerExecutor();
 
-        taskProvider.getAllTasks().forEach(executor::addTask);
+        taskProvider.getAllTasks().forEach(task -> executor.addTask(task, new SimpleValidator<>()));
         executor.execute();
 
         System.out.println("\nValid results: " + executor.getValidResults().size());
         executor.getValidResults().forEach(System.out::println);
         System.out.println("\nInvalid results: " + executor.getInvalidResults().size());
-        executor.getInvalidResults().forEach(System.out::println);
+//        executor.getInvalidResults().forEach(System.out::println);
     }
 
     public void setTaskProvider(TaskProvider<ArrayList<Integer>> taskProvider) {
