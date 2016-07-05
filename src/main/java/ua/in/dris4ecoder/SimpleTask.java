@@ -1,3 +1,5 @@
+package ua.in.dris4ecoder;
+
 import java.util.List;
 import java.util.stream.IntStream;
 

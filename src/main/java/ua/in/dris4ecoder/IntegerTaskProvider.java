@@ -1,3 +1,5 @@
+package ua.in.dris4ecoder;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

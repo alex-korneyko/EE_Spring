@@ -1,3 +1,5 @@
+package ua.in.dris4ecoder;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
@@ -14,7 +16,7 @@ public class MainExecutor<T extends List<Integer>> implements Executor<T> {
     @Override
     public void addTask(Task<? extends T> task) {
         if (isExecuted) {
-            throw new IllegalArgumentException("Task is already executed");
+            throw new IllegalArgumentException("ua.in.dris4ecoder.Task is already executed");
         }
 
         tasks.add(new TaskWithValidator(task, (result, classObject) -> true));
@@ -23,7 +25,7 @@ public class MainExecutor<T extends List<Integer>> implements Executor<T> {
     @Override
     public void addTask(Task<? extends T> task, Validator<? super T> validator) {
         if (isExecuted) {
-            throw new IllegalArgumentException("Task is already executed");
+            throw new IllegalArgumentException("ua.in.dris4ecoder.Task is already executed");
         }
 
         tasks.add(new TaskWithValidator(task, validator));
@@ -43,7 +45,7 @@ public class MainExecutor<T extends List<Integer>> implements Executor<T> {
             Task<? extends T> task = tasks.get(i).task;
 
             if (!task.isExecuted()) {
-                throw new IllegalArgumentException("Task is not executed");
+                throw new IllegalArgumentException("ua.in.dris4ecoder.Task is not executed");
             }
 
             try {
@@ -66,7 +68,7 @@ public class MainExecutor<T extends List<Integer>> implements Executor<T> {
             Task<? extends T> task = tasks.get(i).task;
 
             if (!task.isExecuted()) {
-                throw new IllegalArgumentException("Task is not executed");
+                throw new IllegalArgumentException("ua.in.dris4ecoder.Task is not executed");
             }
 
             try {

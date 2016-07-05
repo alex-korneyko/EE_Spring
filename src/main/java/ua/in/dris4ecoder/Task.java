@@ -1,3 +1,5 @@
+package ua.in.dris4ecoder;
+
 /**
  * Created by Alex Korneyko on 03.06.2016.
  */

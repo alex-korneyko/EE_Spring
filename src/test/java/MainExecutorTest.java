@@ -1,4 +1,7 @@
 import org.junit.Test;
+import ua.in.dris4ecoder.MainExecutor;
+import ua.in.dris4ecoder.SimpleTask;
+import ua.in.dris4ecoder.SimpleValidator;
 
 import java.util.ArrayList;
 import java.util.List;

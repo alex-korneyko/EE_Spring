@@ -1,3 +1,5 @@
+package ua.in.dris4ecoder;
+
 import java.util.List;
 
 public class SimpleValidator<T extends List<Integer>> implements Validator<T> {
