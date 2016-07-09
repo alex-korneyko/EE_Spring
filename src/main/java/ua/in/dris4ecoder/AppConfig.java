@@ -1,17 +1,18 @@
 package ua.in.dris4ecoder;
 
+import org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.Scope;
 
 import java.util.ArrayList;
-
 
 @Configuration
 public class AppConfig {
 
     @Bean
-    public Main main(ExecutorFactory executorFactory, TaskProvider<ArrayList<Integer>> integerTaskProvider){
+    public Main main(ExecutorFactory executorFactory, TaskProvider<ArrayList<Integer>> integerTaskProvider) {
         Main main = new Main();
         main.setExecutorFactory(executorFactory);
         main.setTaskProvider(integerTaskProvider);
@@ -19,7 +20,7 @@ public class AppConfig {
     }
 
     @Bean
-    public TaskProvider<ArrayList<Integer>> integerTaskProvider(){
+    public TaskProvider<ArrayList<Integer>> integerTaskProvider() {
         IntegerTaskProvider integerTaskProvider = new IntegerTaskProvider();
         integerTaskProvider.init();
         return integerTaskProvider;
@@ -27,17 +28,32 @@ public class AppConfig {
 
     @Bean
     @Scope("prototype")
-    public MainExecutor<ArrayList<Integer>> mainExecutor(){
+    public MainExecutor<ArrayList<Integer>> mainExecutor() {
         return new MainExecutor<>();
     }
 
     @Bean
-    public ExecutorFactory executorFactory(){
+    public ExecutorFactory executorFactory() {
         return new ExecutorFactory() {
             @Override
             public Executor<ArrayList<Integer>> getIntegerExecutor() {
                 return mainExecutor();
             }
         };
+    }
+
+    @Bean
+    public ExecutorInterceptor executorInterceptor() {
+        ExecutorInterceptor executorInterceptor = new ExecutorInterceptor();
+        return executorInterceptor;
+    }
+
+    @Bean
+    public BeanNameAutoProxyCreator beanNameAutoProxyCreator() {
+        BeanNameAutoProxyCreator beanNameAutoProxyCreator = new BeanNameAutoProxyCreator();
+        beanNameAutoProxyCreator.setProxyTargetClass(true);
+        beanNameAutoProxyCreator.setBeanNames("*Executor");
+        beanNameAutoProxyCreator.setInterceptorNames("executorInterceptor");
+        return beanNameAutoProxyCreator;
     }
 }

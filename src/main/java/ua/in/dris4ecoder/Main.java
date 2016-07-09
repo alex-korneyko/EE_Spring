@@ -18,8 +18,6 @@ public class Main {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("application-context.xml");
         Main mainClass = applicationContext.getBean("main", Main.class);
         mainClass.execute();
-        mainClass.execute();
-
     }
 
     public void execute() {

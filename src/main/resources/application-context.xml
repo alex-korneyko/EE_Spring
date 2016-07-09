@@ -10,13 +10,16 @@
     <!--</bean>-->
 
     <!--<bean id="taskProvider" class="ua.in.dris4ecoder.IntegerTaskProvider" init-method="init"/>-->
-
     <!--<bean id="myExecutor" class="ua.in.dris4ecoder.MainExecutor" scope="prototype"/>-->
-
     <!--<bean id="executorFactory" class="ua.in.dris4ecoder.ExecutorFactory">-->
         <!--<lookup-method name="getIntegerExecutor" bean="myExecutor"/>-->
     <!--</bean>-->
 
+    <!--<bean class="ua.in.dris4ecoder.ExecutorInterceptor" id="executorInterceptor"/>-->
+    <!--<bean class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">-->
+        <!--<property name="beanNames" value="*Executor"/>-->
+        <!--<property name="interceptorNames" value="executorInterceptor"/>-->
+    <!--</bean>-->
 
     <context:component-scan base-package="ua.in.dris4ecoder"/>
     <context:annotation-config/>
