@@ -1,5 +1,6 @@
 package ua.in.dris4ecoder;
 
+import org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
@@ -42,5 +43,19 @@ public class AppConfig {
                 return mainExecutor();
             }
         };
+    }
+
+    @Bean
+    public ExecuteInterceptor executeInterceptor() {
+        return new ExecuteInterceptor();
+    }
+
+    @Bean
+    public BeanNameAutoProxyCreator beanNameAutoProxyCreator() {
+        BeanNameAutoProxyCreator beanNameAutoProxyCreator = new BeanNameAutoProxyCreator();
+        beanNameAutoProxyCreator.setProxyTargetClass(true);
+        beanNameAutoProxyCreator.setBeanNames("mainExecutor");
+        beanNameAutoProxyCreator.setInterceptorNames("executeInterceptor");
+        return beanNameAutoProxyCreator;
     }
 }
