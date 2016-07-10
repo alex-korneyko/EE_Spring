@@ -7,13 +7,15 @@
 
     <bean class="ua.in.dris4ecoder.LogAspect" id="logAspect"/>
 
-    <aop:config>
-        <aop:pointcut expression="execution( * ua.in.dris4ecoder.Executor.execute())" id="executorExecute"/>
+    <!--<aop:config>-->
+        <!--<aop:pointcut expression="execution( * ua.in.dris4ecoder.Executor.execute())" id="executorExecute"/>-->
 
-        <aop:aspect ref="logAspect">
-            <aop:around pointcut-ref="executorExecute" method="onExecute"/>
-        </aop:aspect>
+        <!--<aop:aspect ref="logAspect">-->
+            <!--<aop:around pointcut-ref="executorExecute" method="onExecute"/>-->
+        <!--</aop:aspect>-->
 
-    </aop:config>
+    <!--</aop:config>-->
+
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
 
 </beans>

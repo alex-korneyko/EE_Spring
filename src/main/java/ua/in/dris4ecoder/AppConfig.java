@@ -41,19 +41,4 @@ public class AppConfig {
             }
         };
     }
-
-//    @Bean
-//    public ExecutorInterceptor executorInterceptor() {
-//        ExecutorInterceptor executorInterceptor = new ExecutorInterceptor();
-//        return executorInterceptor;
-//    }
-//
-//    @Bean
-//    public BeanNameAutoProxyCreator beanNameAutoProxyCreator() {
-//        BeanNameAutoProxyCreator beanNameAutoProxyCreator = new BeanNameAutoProxyCreator();
-//        beanNameAutoProxyCreator.setProxyTargetClass(true);
-//        beanNameAutoProxyCreator.setBeanNames("*Executor");
-//        beanNameAutoProxyCreator.setInterceptorNames("executorInterceptor");
-//        return beanNameAutoProxyCreator;
-//    }
 }
