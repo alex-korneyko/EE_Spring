@@ -1,10 +1,7 @@
 package ua.in.dris4ecoder;
 
-import org.springframework.beans.factory.ObjectFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 
@@ -15,7 +12,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("application-context.xml");
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("application-context.xml", "aop-context.xml");
         Main mainClass = applicationContext.getBean("main", Main.class);
         mainClass.execute();
     }
