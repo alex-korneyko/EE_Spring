@@ -24,8 +24,8 @@ public class AppConfig {
     public TaskProvider<ArrayList<Integer>> randomTaskProvider() {
 
         RandomTaskProvider randomTaskProvider = new RandomTaskProvider();
-//        randomTaskProvider.setInitSize(10000);
-        randomTaskProvider.init(10000);
+        randomTaskProvider.setInitSize(10000);
+        randomTaskProvider.init();
         return randomTaskProvider;
     }
 
@@ -43,19 +43,5 @@ public class AppConfig {
                 return mainExecutor();
             }
         };
-    }
-
-    @Bean
-    public ExecuteInterceptor executeInterceptor() {
-        return new ExecuteInterceptor();
-    }
-
-    @Bean
-    public BeanNameAutoProxyCreator beanNameAutoProxyCreator() {
-        BeanNameAutoProxyCreator beanNameAutoProxyCreator = new BeanNameAutoProxyCreator();
-        beanNameAutoProxyCreator.setProxyTargetClass(true);
-        beanNameAutoProxyCreator.setBeanNames("mainExecutor");
-        beanNameAutoProxyCreator.setInterceptorNames("executeInterceptor");
-        return beanNameAutoProxyCreator;
     }
 }

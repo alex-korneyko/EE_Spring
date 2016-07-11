@@ -13,7 +13,7 @@
     <!--<bean id="taskProvider" class="ua.in.dris4ecoder.IntegerTaskProvider" init-method="init"/>-->
 
     <!--<bean id="randomTaskProvider" class="ua.in.dris4ecoder.RandomTaskProvider" init-method="init">-->
-        <!--<property name="initSize" value="10000"/>-->
+        <!--<property name="initSize" value="10"/>-->
     <!--</bean>-->
 
     <!--<bean id="myExecutor" class="ua.in.dris4ecoder.MainExecutor" scope="prototype"/>-->

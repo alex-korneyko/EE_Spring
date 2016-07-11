@@ -15,7 +15,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("application-context.xml");
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("application-context.xml", "aop-context.xml");
         Main mainClass = applicationContext.getBean("main", Main.class);
         mainClass.execute();
 

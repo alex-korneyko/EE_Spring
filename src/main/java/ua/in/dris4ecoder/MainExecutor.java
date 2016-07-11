@@ -32,8 +32,8 @@ public class MainExecutor<T extends List<Integer>> implements Executor<T> {
     }
 
     @Override
-    @IsIntercepted
     public void execute() {
+        System.out.println("Executing...");
         tasks.forEach(taskSet -> taskSet.task.execute());
         isExecuted = true;
     }

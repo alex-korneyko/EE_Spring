@@ -11,10 +11,10 @@ public class RandomTaskProvider implements TaskProvider<ArrayList<Integer>> {
 
     private List<Task<ArrayList<Integer>>> tasks = new ArrayList<>();
 
-//    private int initSize = 0;
+    private int initSize = 0;
 
-    public void init(int count){
-        IntStream.range(0, count).forEach(i -> tasks.add(new SimpleTask<>(ArrayList.class)));
+    public void init(){
+        IntStream.range(0, initSize).forEach(i -> tasks.add(new SimpleTask<>(ArrayList.class)));
     }
 
     @Override
@@ -22,7 +22,7 @@ public class RandomTaskProvider implements TaskProvider<ArrayList<Integer>> {
         return tasks;
     }
 
-//    public void setInitSize(int initSize) {
-//        this.initSize = initSize;
-//    }
+    public void setInitSize(int initSize) {
+        this.initSize = initSize;
+    }
 }
