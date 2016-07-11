@@ -7,7 +7,7 @@
 
     <bean id="logAspect" class="ua.in.dris4ecoder.LogAspect"/>
 
-    <aop:aspectj-autoproxy/>
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
 
     <!--<aop:config>-->
         <!--<aop:pointcut id="executorExecute" expression="execution( * ua.in.dris4ecoder.Executor.execute())"/>-->
